@@ -1,77 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" th:replace="~{base::parent(~{::#content},~{::title},~{::script})}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colorful Homepage</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-    <link rel="stylesheet" data-th-href="@{'/css/output.css'}"/>
-    <style>
-
-
-        body {
-            background-color: #f9f9f9;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-
-        h1 {
-            color: #ff5733;
-        }
-
-        p {
-            color: #3498db;
-        }
-
-        .button {
-            background-color: #e74c3c;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .button:hover {
-            background-color: #c0392b;
-        }
-    </style>
+    <title>Home</title>
 </head>
-<body class="bg-amber-300 flex flex-col space-y-5 items-center">
-<div class="text-5xl bg-amber-200 font-bold w-1/2 p-4 mx-auto mt-4">
-    <p>welcome to homepage</p>
+
+<body>
+<div id="content">
+    <h1> Welcome to home page </h1>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, quidem?
+    </p>
 </div>
-<h1 data-th-text="${name} ">Welcome to My Colorful Homepage</h1>
-<p class="-backdrop-hue-rotate-180" >Github : <span data-th-text="${github}"></span></p>
-<p>Fb : <span th:text="${facebook}"></span></p>
-<a th:href="${github}">Click Me to Open Github</a>
-<p>Explore the vibrant world of colors! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias dicta ea earum error eum, ex fugiat ipsa ipsum iure laboriosam laborum, nemo nisi perspiciatis quasi qui quia, voluptatem! Alias, assumenda, atque blanditiis cumque doloribus eaque earum id impedit maxime nam odio, omnis praesentium quaerat quos recusandae reiciendis repellat rerum tenetur!</p>
-<div><button class="bg-accent-green-300 hover:accent-green-500 p-4 rounded">Get Started</button> </div>
-
-<!--flow bite content-->
-
-
-
-<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-    <a href="#">
-        <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
-    </a>
-    <div class="p-5">
-        <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-        </a>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Read more
-            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-            </svg>
-        </a>
-    </div>
-</div>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-
+<script>
+    console.log("about page");
+</script>
 </body>
 </html>

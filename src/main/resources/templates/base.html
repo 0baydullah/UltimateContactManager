@@ -1,5 +1,42 @@
-<div class="parent-fragment" th:fragment="parent(content)">
-    <h1>This is Parent fragment</h1>
-    <p>Lorem ipsum dolor si Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, neque.</amet></p>
-    <div th:replace="${content}"></div>
-</div>
+<!doctype html>
+<!--thymeleaf namespace-->
+<html lang="en" th:fragment="parent(content,title,script)" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF -8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title data-th-replace="${title}">UCM</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}"/>
+</head>
+    <body>
+<!--        common header-->
+        <ul class="p-4">
+            <li>
+                <a data-th-href="@{'/home'}">HOME</a>
+            </li>
+            <li>
+                <a data-th-href="@{'/about'}">ABOUT</a>
+            </li>
+            <li>
+                <a data-th-href="@{'/services'}">SERVICES</a>
+            </li>
+
+        </ul>
+
+
+<!--        main content-->
+        <div class="p-4">
+            <section data-th-replace="${content}"></section>
+        </div>
+
+
+<!--        common footer-->
+    <footer class="bg-blue-200 p-4">all right reserved to syndicate 69</footer>
+
+<!--        flowbite content-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+        <th:block data-th-replace="${script}"> </th:block>
+    </body>
+</html>

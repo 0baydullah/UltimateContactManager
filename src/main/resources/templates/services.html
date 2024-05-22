@@ -1,16 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>service</title>
-</head>
-<body>
-<H1> This is services page </H1>
-<hr>
-<!--using fragment-->
-<!--<div th:replace="~{base::parent('s1','s2')}"></div>-->
-<div th:replace="~{base :: parent(~{::.abc})}">
-   <section class="abc"> <h1>This is dynamic services passed to base parent</h1></section>
-</div>
-</body>
+<!doctype html>
+<html lang="en" th:replace="~{base::parent(~{::#content},~{::title},~{::script})}">
+    <head>
+        <title>Services</title>
+    </head>
+
+    <body>
+        <section id="content">
+            <h1>Welcome to Services page</h1>
+            <h2>Services offerd by UCM</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, tempore?
+            </p>
+        </section>
+        <script>
+            console.log("services page");
+        </script>
+    </body>
 </html>
