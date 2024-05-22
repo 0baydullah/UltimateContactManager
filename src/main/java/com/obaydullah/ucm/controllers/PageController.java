@@ -18,4 +18,18 @@ public class PageController {
         model.addAttribute("facebook", "https://facebook.com/0baydullah0");
         return "home";
     }
+
+    @RequestMapping("/about")
+    public String about(){
+        System.out.println("about page loading");
+        return "about";
+    }
+
+    @RequestMapping("/services")
+    public String services(){
+        System.out.println("services page loading");
+        return "services";
+    }
+
+
 }

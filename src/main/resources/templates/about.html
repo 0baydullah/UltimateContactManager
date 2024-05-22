@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+</head>
+<body>
+<H1> This is about page </H1>
+<hr/>
+<!--using fragment-->
+<div class="host-tag" th:replace="~{base :: parent(~{::p})}">
+    <p>
+        this is dynamic content
+    </p>
+</div>
+</body>
+</html>
