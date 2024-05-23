@@ -1,6 +1,6 @@
 <!doctype html>
 <!--thymeleaf namespace-->
-<html lang="en" th:fragment="parent(content,title,script)" xmlns:th="http://www.thymeleaf.org">
+<html class="dark" lang="en" th:fragment="parent(content,title,script)" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF -8">
     <meta name="viewport"
@@ -10,24 +10,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" data-th-href="@{'/css/output.css'}"/>
 </head>
-    <body>
+    <body class="dark:bg-gray-900 dark:text-white">
 <!--        common header-->
-        <ul class="p-4">
-            <li>
-                <a data-th-href="@{'/home'}">HOME</a>
-            </li>
-            <li>
-                <a data-th-href="@{'/about'}">ABOUT</a>
-            </li>
-            <li>
-                <a data-th-href="@{'/services'}">SERVICES</a>
-            </li>
 
-        </ul>
-
+        
+        <div data-th-replace="navbar::navbar"></div>
 
 <!--        main content-->
-        <div class="p-4">
+        <div class="p-4 mt-20">
             <section data-th-replace="${content}"></section>
         </div>
 
