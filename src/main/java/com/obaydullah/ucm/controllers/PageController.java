@@ -3,7 +3,10 @@ package com.obaydullah.ucm.controllers;
 
 import com.obaydullah.ucm.entities.User;
 import com.obaydullah.ucm.forms.UserForm;
+import com.obaydullah.ucm.helper.Message;
+import com.obaydullah.ucm.helper.MessageType;
 import com.obaydullah.ucm.services.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,7 +74,7 @@ public class PageController {
     // processing register
 
     @RequestMapping(value = "/do-register", method = RequestMethod.POST)
-    public String processRegister(@ModelAttribute UserForm userForm){
+    public String processRegister(@ModelAttribute UserForm userForm, HttpSession session){
         System.out.println("do register running");
 
 
@@ -105,6 +108,10 @@ public class PageController {
 
 
         // registration success message
+
+        Message message = Message.builder().content("Registration Successful").type(MessageType.green).build();
+
+        session.setAttribute("message",message);
 
         System.out.println("savedUser = " + savedUser.toString());
         //redirect to  login page
