@@ -1,12 +1,14 @@
 package com.obaydullah.ucm.services.impl;
 
 import com.obaydullah.ucm.entities.User;
+import com.obaydullah.ucm.helper.AppConstants;
 import com.obaydullah.ucm.helper.ResourceNotFoundException;
 import com.obaydullah.ucm.repositories.UserRepository;
 import com.obaydullah.ucm.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +21,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 
@@ -29,6 +34,11 @@ public class UserServiceImpl implements UserService {
         user.setUserId(userId);
 
         // password encode
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        // set user role
+
+        user.setRoleList(List.of(AppConstants.ROLE_USER));
 
         // profile pic
 //        user.setProfilePic("https://images.unsplash.com/photo-1542596594-649edbc13630?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
