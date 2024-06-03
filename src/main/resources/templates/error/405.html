@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" th:replace="~{base::parent(~{::#content},~{::title},~{::script})}">
+<head>
+    <title>405</title>
+</head>
+
+<body>
+<div id="content">
+    <h1> Something went wrong!! </h1>
+    <h3>Server status 405</h3>
+    <p>
+        You are seeing this page cause there is some problem from server. If you are successfully logged in you can access pages from below links.
+    </p>
+
+    <div>
+        <a class="py-2 text-blue-800 text-5xl text-center" data-th-href="@{'/user/dashboard'}">dashboard</a>
+        <br>
+        <a class="py-2 text-blue-800 text-5xl text-center" data-th-href="@{'/user/profile'}">profile</a>
+    </div>
+
+</div>
+<script>
+    console.log("about page");
+</script>
+</body>
+</html>

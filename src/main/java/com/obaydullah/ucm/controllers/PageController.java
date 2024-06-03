@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,6 +26,11 @@ public class PageController {
     @RequestMapping("/")
     public String index() {
         return "redirect:home";
+    }
+
+    @RequestMapping("/authenticate")
+    public String authenticate() { /// fall back error 405 when login , so redirect to dashboard
+        return "redirect:/user/dashboard";
     }
 
     @RequestMapping("/home")
@@ -56,11 +62,24 @@ public class PageController {
         return "contact";
     }
 
-    @RequestMapping("/login")
+    @RequestMapping(value = "/login")
     public String login(){
         System.out.println("login page echoing");
         return "login";
     }
+
+//    @PostMapping("/login")
+//    public String lin(){
+//            System.out.println("login page echoing");
+//            return "login";
+//
+//    }
+//    @PostMapping("/authenticate")
+//    public String auth(){
+//        System.out.println("login page echoing");
+//        return "redirect:/user/dashboard";
+//
+//    }
 
     @RequestMapping("/register")
     public String register(Model model){
@@ -129,5 +148,10 @@ public class PageController {
 
         return "redirect:/register";
     }
+
+//    @RequestMapping(value = "/authenticate",method = {RequestMethod.POST})
+//    public String auth(){
+//        return "redirect:/user/dashboard";
+//    }
 
 }

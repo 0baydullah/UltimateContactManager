@@ -3,15 +3,26 @@ package com.obaydullah.ucm.config;
 
 
 import com.obaydullah.ucm.services.impl.SecurityCustomUserDetailService;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.io.IOException;
 
 @Configuration
 public class SecurityConfig {
@@ -73,8 +84,31 @@ public class SecurityConfig {
                     anyRequest().permitAll();
         });
 
-        // form default login
-        httpSecurity.formLogin(Customizer.withDefaults());
+
+        // default form login
+
+      //  httpSecurity.formLogin(Customizer.withDefaults());
+
+    // csrf disable
+        httpSecurity.csrf(AbstractHttpConfigurer::disable);
+
+
+        // customize login
+
+        httpSecurity.formLogin(formLogin ->{
+            formLogin.loginPage( "/login");
+            formLogin.loginProcessingUrl("/authenticate");
+            formLogin.successForwardUrl("/user/dashboard");
+           // formLogin.failureUrl("/login");
+            formLogin.usernameParameter("email");
+            formLogin.passwordParameter("password");
+        });
+
+        httpSecurity.logout(logoutForm->{
+            logoutForm.logoutUrl("/logout");
+            logoutForm.logoutSuccessUrl("/login?logout=true");
+
+        });
 
         return httpSecurity.build();
     }
